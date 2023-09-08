@@ -285,14 +285,15 @@
 
 
 " Coc Tab and Enter completion
-" Tab key: Cycles through completion 
-	inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#next(1) : CheckBackspace() ? "\<Tab>" : coc#refresh()
+" Up key: Cycles through completion 
+	inoremap <silent><expr> <Down> coc#pum#visible() ? coc#pum#next(1) : CheckBackspace() ? "\<Tab>" : coc#refresh()
 
-" Shift + Tab key: Cycles through completion items in reverse order
-	inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+" Down key: Cycles through completion items in reverse order
+	inoremap <expr><Up> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-" Enter key: Accepts the selected completion
+" Tab & Enter key: Accepts the selected completion
 	inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+	inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 
 " For copy and past
