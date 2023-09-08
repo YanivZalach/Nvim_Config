@@ -12,8 +12,7 @@ What do we have here? My Nvim configuration file!
 Who can use it? Anyone can use it!
 
 
-![vim_conf](https://github.com/YanivZalach/qtile-config/assets/131461377/7dc0cb1f-13a9-40e9-89c7-81e67cfa7901)
-
+<img width="949" alt="nvim" src="https://github.com/YanivZalach/Nvim_Config/assets/131461377/3cc992e7-292d-4f4d-a1b7-387cf79d9b95">
 
 ## Requirements 🛠️
 
