@@ -138,18 +138,8 @@
 " Wild menu will ignore files with these extensions.
 	set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
-" If Vim version is equal to or greater than 7.3 enable undo file.
-" This allows you to undo changes to a file even after saving it.
-	if version >= 703
-    	set undodir=~/.vim/backup
-    	set undofile
-    	set undoreload=10000
-	endif
-
-
 " Fuzzy search showing hidden files
 	let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
-
 
 " Status line - Airline
 	" Better looking
@@ -163,13 +153,11 @@
 	let g:netrw_showhide=1
 	let g:netrw_winsize=20
 
-
 " Nerd tree settings
 	let g:NERDTreeDirArrowExpandable="+"
 	let g:NERDTreeDirArrowCollapsible="~"
 	let g:NERDTreeShowHidden=1
 	let g:NERDTreeWinSize = 20
-
 
 
 " Exit Vim if NERD Tree is the only window remaining in the only tab.
