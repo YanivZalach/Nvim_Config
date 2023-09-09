@@ -16,6 +16,7 @@
 
 		Plug 'https://github.com/preservim/nerdtree' " Nerd Tree
 		Plug 'https://github.com/vim-airline/vim-airline' " Status bar
+		Plug 'navarasu/onedark.nvim' " Color scheme - onedark
 		Plug 'https://github.com/ryanoasis/vim-devicons' " Developer Icons
 		Plug 'neoclide/coc.nvim', {'branch': 'release'} "For auto complete 
 		Plug 'https://github.com/nvim-lua/plenary.nvim' " Dependency for telescope
@@ -82,7 +83,11 @@
 	set mouse=a
 
 " Color scheme
-	color slate 
+	" With no plugins
+	" color slate 
+	" With plugins
+	let g:onedark_config = {'style': 'darker',}	" Options: darker, dark, cool, deep, warm, warmer, light
+	colorscheme onedark
 
 " Highlight cursor line underneath the cursor horizontally.
 	set cursorline
@@ -168,7 +173,8 @@
 	if has('gui_running')
 
     	" Set the color scheme.
-    		color slate
+		"
+    		color onedark
 
 		" Font
 			if has("gui_macvim")
@@ -293,7 +299,7 @@
 
 " Tab & Enter key: Accepts the selected completion
 	inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-	inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+	inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<Tab>"
 
 
 " For copy and past
