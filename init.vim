@@ -16,6 +16,7 @@
 
 		Plug 'https://github.com/preservim/nerdtree' " Nerd Tree
 		Plug 'https://github.com/vim-airline/vim-airline' " Status bar
+		Plug 'vim-airline/vim-airline-themes' " Color scheme for Start line
 		Plug 'navarasu/onedark.nvim' " Color scheme - onedark
 		Plug 'https://github.com/ryanoasis/vim-devicons' " Developer Icons
 		Plug 'neoclide/coc.nvim', {'branch': 'release'} "For auto complete 
@@ -146,6 +147,16 @@
 	endif
 
 
+" Fuzzy search showing hidden files
+	let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
+
+
+" Status line - Airline
+	" Better looking
+	let g:airline_powerline_fonts = 1
+	" Color scheme
+	let g:airline_theme='onedark'
+
 " File Browsing settings
 	let g:netrw_banner=0
 	let g:netrw_liststyle=3
@@ -159,9 +170,6 @@
 	let g:NERDTreeShowHidden=1
 	let g:NERDTreeWinSize = 20
 
-
-" Fuzzy search showing hidden files
-	let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 
 
 " Exit Vim if NERD Tree is the only window remaining in the only tab.
