@@ -220,7 +220,7 @@
 
 
 " Opening a terminal window at a split at the bottom
-	map <C-t> <cmd>split term://bash<CR>i
+	map <C-t> <cmd>split term://$SHELL<CR>i
 " Closing the terminal window
 	tnoremap <C-t> exit<CR>
 " CTRL+I or Esc to make the terminal scrollable and I to input mode
