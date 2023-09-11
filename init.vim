@@ -219,12 +219,13 @@
 	map <leader>e <cmd>Lex<CR>
 
 
-" Opening a terminal window
-	map <c-t> <cmd>ter<CR>
+" Opening a terminal window at a split at the bottom
+	map <C-t> <cmd>split term://bash<CR>i
 " Closing the terminal window
-	tnoremap <c-t> exit<CR>
-" CTRL+I to make the terminal scrollable and I to input mode
-	tnoremap <c-i> <c-w><s-n> 
+	tnoremap <C-t> exit<CR>
+" CTRL+I or Esc to make the terminal scrollable and I to input mode
+	tnoremap <c-i> <C-\><C-n> 
+	tnoremap <Esc> <C-\><C-n>
 
 
 " You can split the window in Vim. y - in the y access , x - in the x access
@@ -232,19 +233,29 @@
 	map <leader>x :vsplit<space>
 
 
-" Navigate the split view easier by pressing CTRL+j, CTRL+k, CTRL+h, or CTRL+l.
-	nnoremap <c-j> <c-w>j
-	nnoremap <c-k> <c-w>k
-	nnoremap <c-h> <c-w>h
-	nnoremap <c-l> <c-w>l
+" Navigate the splits view easier by pressing CTRL+j, CTRL+k, CTRL+h, or CTRL+l.
+	tnoremap <C-h> <C-\><C-N><C-w>h
+	tnoremap <C-j> <C-\><C-N><C-w>j
+	tnoremap <C-k> <C-\><C-N><C-w>k
+	tnoremap <C-l> <C-\><C-N><C-w>l
+
+	inoremap <C-h> <C-\><C-N><C-w>h
+	inoremap <C-j> <C-\><C-N><C-w>j
+	inoremap <C-k> <C-\><C-N><C-w>k
+	inoremap <C-l> <C-\><C-N><C-w>l
+
+	nnoremap <C-h> <C-w>h
+	nnoremap <C-j> <C-w>j
+	nnoremap <C-k> <C-w>k
+	nnoremap <C-l> <C-w>l
 
 
 " Resize split windows using arrow keys by pressing:
 " Alt+UP, Alt+DOWN, Alt+LEFT, or Alt+RIGHT.
-	noremap <a-Up> <c-w>+
-	noremap <a-Down> <c-w>-
-	noremap <a-Left> <c-w>>
-	noremap <a-Right> <c-w><
+	noremap <A-Up> <C-w>+
+	noremap <A-Down> <C-w>-
+	noremap <A-Left> <C-w>>
+	noremap <A-Right> <C-w><
 
 
 " Moving between tabs
@@ -272,21 +283,21 @@
 
 " Telescope functionality
 	" Finding a file in the working directly and opening it
-	nnoremap <leader>ff <cmd>Telescope find_files<cr>
+	nnoremap <leader>ff <cmd>Telescope find_files<CR>
 	" Finding all the files in the working directly include the middens and opening it
-	nnoremap <leader>fh <cmd>Telescope find_files hidden=true<cr>
+	nnoremap <leader>fh <cmd>Telescope find_files hidden=true<CR>
 	" Finding an open file and moving to it
-	nnoremap <leader>fo <cmd>Telescope buffers<cr>
+	nnoremap <leader>fo <cmd>Telescope buffers<CR>
 	" Resent opened files
-	nnoremap <leader>fr <cmd>Telescope oldfiles<cr>
+	nnoremap <leader>fr <cmd>Telescope oldfiles<CR>
 	" Fuzzy word finding
-	nnoremap <leader>fw <cmd>Telescope current_buffer_fuzzy_find<cr>
+	nnoremap <leader>fw <cmd>Telescope current_buffer_fuzzy_find<CR>
 	" Git Status
-	nnoremap <leader>fg <cmd>Telescope git_status<cr>
+	nnoremap <leader>fg <cmd>Telescope git_status<CR>
 	" All the keybinding
-	nnoremap <leader>fk <cmd>Telescope keymaps<cr>
+	nnoremap <leader>fk <cmd>Telescope keymaps<CR>
 	" All the help menu's
-	nnoremap <leader>fm <cmd>Telescope help_tags<cr>
+	nnoremap <leader>fm <cmd>Telescope help_tags<CR>
 
 
 " Coc Tab and Enter completion
