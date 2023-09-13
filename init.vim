@@ -283,8 +283,10 @@
 	map <leader>n <cmd>NERDTreeToggle<CR>
 
 " Git integration
-	" Git stage all changes and commit
-	nnoremap <leader>gc <cmd>w<CR> <cmd>G add .<CR> <cmd>G commit<CR>
+	" Git stage all changes
+	nnoremap <leader>ga <cmd>w<CR> <cmd>G add .<CR>
+	" Git commit
+	nnoremap <leader>gc <cmd>G commit<CR>
 	" Git push current branch
 	nnoremap <leader>gp <cmd>G push<CR>
 	" Git status
