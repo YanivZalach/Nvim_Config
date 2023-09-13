@@ -284,7 +284,7 @@
 
 " Git integration
 	" Git stage all changes and commit
-	nnoremap <leader>gc <cmd>G add .<CR> <cmd>G commit<CR>
+	nnoremap <leader>gc <cmd>w<CR> <cmd>G add .<CR> <cmd>G commit<CR>
 	" Git push current branch
 	nnoremap <leader>gp <cmd>G push<CR>
 	" Git status
