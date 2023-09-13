@@ -282,6 +282,23 @@
 " Opening/closing NERD tree
 	map <leader>n <cmd>NERDTreeToggle<CR>
 
+" git integration
+	" Git add and commit all
+	nnoremap <leader>gc <cmd>G add .<CR> <cmd>G commit<CR>
+	" Git push
+	nnoremap <leader>gp <cmd>G push<CR>
+	" Git status
+	"	Keys:
+	"		- -> stage and ustage a file
+	"		cc -> commit massage
+	nnoremap <leader>gs <cmd>G<CR>
+	" Git log
+	nnoremap <leader>gl <cmd>G log<CR>
+	" Git marge conflict: 
+	"	:Gvdiffsplit!
+	"		to chose what window we want to take: dXo - (X - left-> d2o , right-> d3o)
+
+
 " Telescope functionality
 	" Finding a file in the working directly and opening it
 	nnoremap <leader>ff <cmd>Telescope find_files<CR>
