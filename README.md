@@ -158,7 +158,8 @@ Take your editing experience to the next level with these added key bindings:
 - `<Space> + fk`: All the keybinding.
 - `<Space> + fm`: All the help menu's.
 - `<Space> + fg`: Git status changes.
-- `<Space> + gc`: Add changes as commiting them.
+- `<Space> + ga`: Add all changes.
+- `<Space> + gc`: Commit changes.
 - `<Space> + gp`: Git push.
 - `<Space> + gs`: Git file status.
 - `<Space> + gl`: Git log.
