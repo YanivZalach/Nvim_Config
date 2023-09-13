@@ -284,11 +284,9 @@
 
 " Git integration
 	" Git stage all changes and commit
-"	nnoremap <leader>gc <cmd>G add .<CR> <cmd>G commit<CR>
-	nnoremap <leader>gc <cmd>Gwrite<CR> <cmd>G commit<CR>
+	nnoremap <leader>gc <cmd>G add .<CR> <cmd>G commit<CR>
 	" Git push current branch
-	nnoremap <leader>gp <cmd>Gpush<CR>
-"	nnoremap <leader>gp <cmd>G push<CR>
+	nnoremap <leader>gp <cmd>G push<CR>
 	" Git status
 	"	Keys:
 	"		- -> stage and ustage a file
