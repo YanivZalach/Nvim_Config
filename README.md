@@ -1,4 +1,5 @@
 # My Awesome NeoVim Configuration For Unix/WSL
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 <p align="center">
    <img width="600" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Neovim-logo.svg/1200px-Neovim-logo.svg.png" alt="Neovim Logo">
@@ -6,11 +7,9 @@
 
 [NeoVim](https://neovim.io) is a powerful and highly configurable text editor designed to make text manipulation and coding a breeze. It's known for its unique modal editing system, where different modes offer distinct functionalities like insertion, navigation, and text manipulation. This design philosophy enables lightning-fast editing once you're familiar with the concepts.
 
-
-What do we have here? My Nvim configuration file! 
+What do we have here? My Nvim configuration file!
 
 Who can use it? Anyone can use it!
-
 
 <img width="949" alt="nvim" src="https://github.com/YanivZalach/Nvim_Config/assets/131461377/3cc992e7-292d-4f4d-a1b7-387cf79d9b95">
 
@@ -20,78 +19,90 @@ Before using this Nvim configuration, make sure you have the following installed
 
 - [NeoVim](https://neovim.io) 📜 - MUST HAVE
 
-
-*What if i want to use Vim? visit: https://github.com/YanivZalach/Vim_Config*
-
+*What if i want to use Vim? visit: <https://github.com/YanivZalach/Vim_Config>*
 
 **And:**
+
 - [Node.js](https://github.com/nodejs/node) 🟢 (Auto-Completion using nvim.coc)
 - [Vim-Plug](https://github.com/junegunn/vim-plug) ⚡️ (plugin manager)
 
-
-*What if i want a fast, plug and play setup? visit: https://github.com/YanivZalach/Vim_Config_NO_PLUGINS*
+*What if i want a fast, plug and play setup? visit: <https://github.com/YanivZalach/Vim_Config_NO_PLUGINS>*
 
 ## Installation 📦
 
 1. Install the programs listed above using your package manager or download them from their respective websites.
-   
+
 2. Copy the config file:
-   
+
       Copy and paste the following command into the terminal and press 'enter':
-    
+
       ```bash
       git clone https://github.com/YanivZalach/Nvim_Config.git ~/.config/nvim
       ```
 
 3. Install the Plugins:
-   
+
    To install the plugins, follow these steps:
-   
+
    Launch NeoVim by typing the following in the terminal, all in lowercase:
+
    ```
    nvim
    ```
+
    Once inside NeoVim, press **:** to enter command mode.
 
    Write the following command to trigger plugin installation:
+
    ```
    PlugInstall
    ```
+
    After running this command, a window will pop up showing the progress of plugin downloads. Wait for the downloads to complete.
 
    Once the download is finished, you can exit the window by typing:
+
    ```
    :q
    ```
+
    With these steps, you'll have successfully installed the plugins for your NeoVim configuration.
-   
 
 ## Usage, Features, and Special Key Bindings 🚀
-### Welcome to Your Enhanced Vim Experience!
+
+### Welcome to Your Enhanced Vim Experience
 
 Smart Tab and Indentation Settings 💡
-  * Experience seamless and intelligent code indentation for a consistent coding journey.
+
+- Experience seamless and intelligent code indentation for a consistent coding journey.
 
 Telescope Fuzzy Finder 🔍
-  * Move fast using the Telescope Fuzzy Finder to switch seamlessly between files.
+
+- Move fast using the Telescope Fuzzy Finder to switch seamlessly between files.
   
 Auto-Completion using coc.nvim 🔌
   
-  * Auto-completion courtesy of coc.nvim, which can be extended in the future, with enhancements and specific languages.
-    
+- Auto-completion courtesy of coc.nvim, which can be extended in the future, with enhancements and specific languages.
+
+Git integration using vim fugitive 🎮
+
+- Git keybindings and commends easy and fast with vim fugitive.
+
 NERD Tree Integration 🌲
-  * Navigate through your project effortlessly with NERD Tree, your trusty sidekick for efficient file exploration.
+
+- Navigate through your project effortlessly with NERD Tree, your trusty sidekick for efficient file exploration.
   
 Vim-airline ✈️
-  * a sleek and customizable status bar for Vim, located at the bottom of your editor.
+
+- a sleek and customizable status bar for Vim, located at the bottom of your editor.
 
 Vim-devicons 🌈
-  * Developer-friendly icons to different file types and directories. 
+
+- Developer-friendly icons to different file types and directories.
 
 Vim-terminal 💻
-  * A terminal emulator directly within Vim. compile code, and perform other terminal-related tasks without leaving your Vim environment.
 
-
+- A terminal emulator directly within Vim. compile code, and perform other terminal-related tasks without leaving your Vim environment.
 
 ### Native Vim Key Bindings 🎮
 
@@ -144,35 +155,41 @@ Take your editing experience to the next level with these added key bindings:
 - `<Space> + fo`: Finding an open file.
 - `<Space> + fr`: Opening an old file.
 - `<Space> + fw`: Fuzzy word finding.
-- `<Space> + fg`: Git status.
 - `<Space> + fk`: All the keybinding.
 - `<Space> + fm`: All the help menu's.
-
-
+- `<Space> + fg`: Git status changes.
+- `<Space> + gc`: Add changes as commiting them.
+- `<Space> + gp`: Git push.
+- `<Space> + gs`: Git file status.
+- `<Space> + gl`: Git log.
 
 ## Troubleshooting 🔧
 
 The installation is not working:
 
-* Make sure you have Git installed on your computer.
+- Make sure you have Git installed on your computer.
   Open the terminal and run the following command:
+
   ```bash
   git --version
   ```
+
   If Git is installed, you will see the installed version. If not, you need to install it using your package manager.
   Then retry the Installation.
   
-* Check if a file/directory already exists
-  
+- Check if a file/directory already exists
   
   Check if the `~/.config/nvim` already exists.
   Open the terminal and run the following command :
 
   - To check if the `~/.config/nvim` directory exists, run:
+
       ```bash
       ls ~/.config/nvim
       ```
+
       Is found, run:
+
       ```bash
       mv ~/.config/nvim ~/.config/nvim_backup
       ```
