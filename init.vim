@@ -15,13 +15,14 @@
 	call plug#begin()
 
 		Plug 'https://github.com/preservim/nerdtree' " Nerd Tree
-		Plug 'https://github.com/vim-airline/vim-airline' " Status bar
-		Plug 'vim-airline/vim-airline-themes' " Color scheme for Start line
-		Plug 'navarasu/onedark.nvim' " Color scheme - onedark
 		Plug 'https://github.com/ryanoasis/vim-devicons' " Developer Icons
-		Plug 'neoclide/coc.nvim', {'branch': 'release'} "For auto complete 
+		Plug 'https://github.com/vim-airline/vim-airline' " Status bar
+		Plug 'vim-airline/vim-airline-themes' " Color scheme for Status bar
+		Plug 'navarasu/onedark.nvim' " Color scheme - onedark
+		Plug 'tpope/vim-fugitive' " Git integration
 		Plug 'https://github.com/nvim-lua/plenary.nvim' " Dependency for telescope
 		Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' } " Telescope - fuzzy search throw files
+		Plug 'neoclide/coc.nvim', {'branch': 'release'} "For auto complete 
 
 
 	call plug#end()
