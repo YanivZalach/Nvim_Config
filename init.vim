@@ -282,11 +282,13 @@
 " Opening/closing NERD tree
 	map <leader>n <cmd>NERDTreeToggle<CR>
 
-" git integration
-	" Git add and commit all
-	nnoremap <leader>gc <cmd>G add .<CR> <cmd>G commit<CR>
-	" Git push
-	nnoremap <leader>gp <cmd>G push<CR>
+" Git integration
+	" Git stage all changes and commit
+"	nnoremap <leader>gc <cmd>G add .<CR> <cmd>G commit<CR>
+	nnoremap <leader>gc <cmd>Gwrite<CR> <cmd>G commit<CR>
+	" Git push current branch
+	nnoremap <leader>gp <cmd>Gpush<CR>
+"	nnoremap <leader>gp <cmd>G push<CR>
 	" Git status
 	"	Keys:
 	"		- -> stage and ustage a file
