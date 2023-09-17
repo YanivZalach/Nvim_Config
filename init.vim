@@ -37,6 +37,7 @@
 "			python->	:CocInstall coc-python
 "			python3->	:CocInstall coc-pyright
 "			cpp->	:CocInstall coc-clangd
+"			rust->	:CocInstall coc-rust-analyzer
 "
 "			add in CocConfig(inside {}):
 "				"diagnostic.checkCurrentLine":true
