@@ -94,6 +94,9 @@
 	" With plugins
 	let g:onedark_config = {'style': 'darker',}	" Options: darker, dark, cool, deep, warm, warmer, light
 	colorscheme onedark
+	" Make Color of comments more visible
+	highlight Comment guifg=#777777
+
 
 " Highlight cursor line underneath the cursor horizontally.
 	set cursorline
