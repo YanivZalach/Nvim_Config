@@ -149,6 +149,8 @@ Take your editing experience to the next level with these added key bindings:
 - `<Space> + c`: Create a new tab.
 - `<Ctrl> + s`: Save the current file.
 - `<Ctrl> + q`: Save and quit.
+- `<Space> + sw`: Surround word with a wanted character.
+- `<Space> + rw`: Replace all occurrences of a word.
 - `<Ctrl> + n`: Toggle NERD Tree.
 - `<Space> + ff`: Finding a file in the working directly.
 - `<Space> + fh`: Finding a file in the working directly including a hidden one.
