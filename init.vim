@@ -332,16 +332,22 @@
 	nnoremap <leader>fm <cmd>Telescope help_tags<CR>
 
 
-" Coc Tab and Enter completion
-" Up key: Cycles through completion 
-	inoremap <silent><expr> <Up> coc#pum#visible() ? coc#pum#prev(1) : "\<Up>"
-
-" Down key: Cycles through completion items in reverse order
-	inoremap <silent><expr> <Down> coc#pum#visible() ? coc#pum#next(1) : "\<Down>"
-
-" Tab & Enter key: Accepts the selected completion
-	inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-	inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<Tab>"
+" Coc functionality
+	"Tab and Enter completion
+	" Up key: Cycles through completion 
+		inoremap <silent><expr> <Up> coc#pum#visible() ? coc#pum#prev(1) : "\<Up>"
+	
+	" Down key: Cycles through completion items in reverse order
+		inoremap <silent><expr> <Down> coc#pum#visible() ? coc#pum#next(1) : "\<Down>"
+	
+	" Tab & Enter key: Accepts the selected completion
+		inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+		inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<Tab>"
+	
+	" Jump to definition (X and Y for the axis, T for tab)
+		nnoremap <leader>dx <cmd>call CocAction('jumpDefinition', 'vsplit')<CR>
+		nnoremap <leader>dy <cmd>call CocAction('jumpDefinition', 'split')<CR>
+		nnoremap <leader>dt <cmd>call CocAction('jumpDefinition', 'tabe')<CR>
 
 
 " For copy and past
