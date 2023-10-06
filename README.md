@@ -151,6 +151,7 @@ Take your editing experience to the next level with these added key bindings:
 - `<Ctrl> + q`: Save and quit.
 - `<Space> + sw`: Surround word with a wanted character.
 - `<Space> + rw`: Replace all occurrences of a word.
+- `<Space + ht`: toggle `Hebrew` mode.
 - `<Ctrl> + n`: Toggle NERD Tree.
 - `<Space> + ff`: Finding a file in the working directly.
 - `<Space> + fh`: Finding a file in the working directly including a hidden one.

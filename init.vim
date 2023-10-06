@@ -171,7 +171,7 @@
 " Exit Vim if NERD Tree is the only window remaining in the only tab.
 	autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
-"------------------GVIM - GUI VERSION------------------
+"------------------GUI VERSION------------------
 
 
 	if has('gui_running')
@@ -199,6 +199,23 @@
 			autocmd VimEnter * NERDTree | wincmd p
 
 	endif
+
+
+"------------------Hebrew_Toggle_Function------------------
+
+function! ToggleHebrew()
+	if &rl
+		set norl
+		set keymap=
+		set spell
+		echom "Hebrew mode OFF"
+	else
+		set rl
+		set keymap=hebrew
+		set nospell
+		echom "Hebrew mod ON"
+	endif
+endfunction
 
 
 "------------------KEY_BINDINGS------------------
@@ -285,6 +302,10 @@
 
 " Replace all occurrences of a word
 	nnoremap <leader>rw :%s/\<<c-r><c-w>\>//g<left><left>
+
+
+" Toggle Hebrew key maps and Right-to-Left setting
+	nnoremap <leader>ht <cmd>call ToggleHebrew()<CR>
 
 
 " Map V-Block to not confuse with Past
