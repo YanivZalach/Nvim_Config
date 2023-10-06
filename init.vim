@@ -318,12 +318,14 @@
 	nnoremap <leader>ff <cmd>Telescope find_files<CR>
 	" Finding all the files in the working directly include the middens and opening it
 	nnoremap <leader>fh <cmd>Telescope find_files hidden=true<CR>
-	" Finding an open file and moving to it
-	nnoremap <leader>fo <cmd>Telescope buffers<CR>
-	" Resent opened files
-	nnoremap <leader>fr <cmd>Telescope oldfiles<CR>
+	" Finding an open file(buffers) and moving to it
+	nnoremap <leader>fb <cmd>Telescope buffers<CR>
+	" Resent opened files(old files)
+	nnoremap <leader>fo <cmd>Telescope oldfiles<CR>
 	" Fuzzy word finding
 	nnoremap <leader>fw <cmd>Telescope current_buffer_fuzzy_find<CR>
+	" Pick from register
+	nnoremap <leader>fr <cmd>Telescope registers<CR>
 	" Git Status
 	nnoremap <leader>fg <cmd>Telescope git_status<CR>
 	" All the keybinding
