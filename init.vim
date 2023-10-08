@@ -38,6 +38,7 @@
 "			python3->	:CocInstall coc-pyright
 "			cpp->	:CocInstall coc-clangd
 "			rust->	:CocInstall coc-rust-analyzer
+"			latex->	:CocInstall coc-texlab
 "
 "			add in CocConfig(inside {}):
 "				"diagnostic.checkCurrentLine":true
