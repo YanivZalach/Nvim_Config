@@ -94,17 +94,21 @@ NERD Tree Integration 🌲
   
 Vim-airline ✈️
 
-- a sleek and customizable status bar for Vim, located at the bottom of your editor.
+- a sleek and customizable status bar for Nvim, located at the bottom of your editor.
 
 Vim-devicons 🌈
 
 - Developer-friendly icons to different file types and directories.
 
-Vim-terminal 💻
+Nvim-terminal 💻
 
-- A terminal emulator directly within Vim. compile code, and perform other terminal-related tasks without leaving your Vim environment.
+- A terminal emulator directly within Nvim. compile code, and perform other terminal-related tasks without leaving your Vim environment.
 
-### Native Vim Key Bindings 🎮
+Hebrew Mode 🚀
+
+- A mode that support right to left written languages. This feature empowers you so you can use any Language in Nvim.
+
+### Native Neovim Key Bindings 🎮
 
 Utilize these native Vim key bindings to navigate and control the text editor efficiently:
 
@@ -136,6 +140,8 @@ Take your editing experience to the next level with these added key bindings:
 - `<Ctrl> + <Shift> + v`: Paste text from the main clipboard.
 - `jj`: Quickly exit insert mode.
 - `Q`: Format a paragraph into lines.
+- `J`: In visual mode, move line down.
+- `K`: In visual mode, move line up.
 - `<Ctrl> + z`: Toggle spell check.
 - `<Space> + e`: Open a file explorer.
 - `<Space> + v`: Enter V-Block Mode
