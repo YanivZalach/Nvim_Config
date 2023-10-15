@@ -166,7 +166,7 @@ Take your editing experience to the next level with these added key bindings:
 - `<Space> + fw`: Fuzzy word finding.
 - `<Space> + fr`: Pick from registers.
 - `<Space> + fk`: All the keybinding.
-- `<Space> + fm`: All the help menu's.
+- `<Space> + fm`: Select and go to mark.
 - `<Space> + fg`: Git status changes.
 - `<Space> + ga`: Add all changes.
 - `<Space> + gc`: Commit changes.

@@ -356,12 +356,12 @@ endfunction
 	nnoremap <leader>fw <cmd>Telescope current_buffer_fuzzy_find<CR>
 	" Pick from register
 	nnoremap <leader>fr <cmd>Telescope registers<CR>
+	" Select and go to mark
+	nnoremap <leader>fm <cmd>Telescope marks<CR>
 	" Git Status
 	nnoremap <leader>fg <cmd>Telescope git_status<CR>
 	" All the keybinding
 	nnoremap <leader>fk <cmd>Telescope keymaps<CR>
-	" All the help menu's
-	nnoremap <leader>fm <cmd>Telescope help_tags<CR>
 
 
 " Coc functionality
