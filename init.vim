@@ -152,11 +152,8 @@
 	let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 
 " Closing compaction in insert mode
-	inoremap ' ''<left>
-	inoremap ` ``<left>
 	inoremap " ""<left>
 	inoremap ( ()<left>
-	inoremap [ []<left>
 	inoremap { {}<left>
 	inoremap /* /**/<left><left>
 
