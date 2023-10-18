@@ -34,11 +34,12 @@
 "			:PlugInstall
 "
 "		nvim.coc:
-"			python->	:CocInstall coc-python
 "			python3->	:CocInstall coc-pyright
 "			cpp->	:CocInstall coc-clangd
+"			javascript-> :CocInstall coc-tsserver
 "			rust->	:CocInstall coc-rust-analyzer
 "			latex->	:CocInstall coc-texlab
+"			python->	:CocInstall coc-python
 "
 "			add in CocConfig(inside {}):
 "				"diagnostic.checkCurrentLine":true
