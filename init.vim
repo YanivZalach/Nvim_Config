@@ -22,7 +22,8 @@
 		Plug 'tpope/vim-fugitive' " Git integration
 		Plug 'https://github.com/nvim-lua/plenary.nvim' " Dependency for telescope
 		Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' } " Telescope - fuzzy search throw files
-		Plug 'neoclide/coc.nvim', {'branch': 'release'} "For auto complete 
+		Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " Treesitter - better syntax highlighting
+		Plug 'neoclide/coc.nvim', {'branch': 'release'} " For auto complete 
 
 
 	call plug#end()
@@ -96,7 +97,7 @@
 	" With plugins
 	let g:onedark_config = {'style': 'darker',}	" Options: darker, dark, cool, deep, warm, warmer, light
 	colorscheme onedark
-	" Make Color of comments more visible
+	" Make Color of comments more visible (With no treesitter)
 	highlight Comment guifg=#777777
 
 
@@ -148,9 +149,6 @@
 " Wild menu will ignore files with these extensions.
 	set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
-" Fuzzy search showing hidden files
-	let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
-
 " Closing compaction in insert mode
 	inoremap " ""<left>
 	inoremap ( ()<left>
@@ -178,6 +176,33 @@
 
 " Exit Vim if NERD Tree is the only window remaining in the only tab.
 	autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+" Treesitter settings
+lua << EOF
+	require'nvim-treesitter.configs'.setup {
+	  -- A list of parser names, or "all"
+	  ensure_installed = { "c", "lua", "vim", "vimdoc", "query" }, -- Mast have
+	  sync_install = false, -- Install parsers synchronously
+	  auto_install = true, -- Automatically install missing parsers when entering buffer
+	  ignore_install = { "" }, -- List of parsers to ignore installing (or "all")
+
+	  highlight = {
+	    enable = true,
+	    disable = {""}, -- list of language that will be disabled. For disable highlighting for the `tex` filetype, include `latex` in the list
+		-- Disable slow treesitter highlight for large files
+	    disable = function(lang, buf) 
+	        local max_filesize = 100 * 1024 -- 100 KB
+	        local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+	        if ok and stats and stats.size > max_filesize then
+	            return true
+	        end
+	    end,
+	    additional_vim_regex_highlighting = false, -- May slow down your editor, and some duplicate highlights.
+	  },
+	}
+EOF
+" Make Color of comments more visible (With treesitter)
+	hi @comment guifg=#777777
 
 "------------------GUI VERSION------------------
 
