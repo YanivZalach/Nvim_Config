@@ -208,33 +208,14 @@ EOF
 
 "------------------GUI VERSION------------------
 
-
-	if has('gui_running')
-
-    	" Set the color scheme.
-		"
-    		color onedark
-
-		" Font
-			if has("gui_macvim")
-    			set guifont=Menlo\ Regular:h14
-			elseif has("gui_win32")
-				set guifont="Consolas 11"
-			else
-				set guifont=Consolas\ 14
-			endif
-
-		" Hide the toolbar.
-			set guioptions-=T
-
-    	" Hide the right-side scroll bar.
-    		set guioptions-=r
-
-		" Start NERD Tree and put the cursor back in the other window.
-			autocmd VimEnter * NERDTree | wincmd p
-
-	endif
-
+if $COLORTERM !=# 'truecolor'
+	echo "GUI NVIM"
+	" Make Airline more font compatible 
+	let g:airline_powerline_fonts = 0
+	" Start Lex Tree and put the cursor back in the other window.
+	    " Start Lex Tree and put the cursor back in the other window.
+    autocmd VimEnter * Lex
+endif
 
 "------------------Hebrew_Toggle_Function------------------
 
