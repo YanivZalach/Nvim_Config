@@ -208,7 +208,8 @@ EOF
 
 "------------------GUI VERSION------------------
 
-if $COLORTERM !=# 'truecolor'
+" If the user want more compatible editor
+if exists('g:GuiLoaded')
 	echo "GUI NVIM"
 	" Make Airline more font compatible 
 	let g:airline_powerline_fonts = 0
