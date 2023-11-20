@@ -92,15 +92,15 @@ Git integration using vim fugitive 🎮
 
 - Git keybindings and commends easy and fast with vim fugitive.
 
-NERD Tree Integration 🌲
+Oil nvim Integration 🌲
 
-- Navigate through your project effortlessly with NERD Tree, your trusty sidekick for efficient file exploration.
+- Navigate through your project effortlessly with Oil nvim, your trusty sidekick for efficient file exploration.
   
 Vim-airline ✈️
 
 - a sleek and customizable status bar for Nvim, located at the bottom of your editor.
 
-Vim-devicons 🌈
+Vim-web-devicons 🌈
 
 - Developer-friendly icons to different file types and directories.
 
@@ -111,6 +111,10 @@ Nvim-terminal 💻
 Hebrew Mode 🚀
 
 - A mode that support right to left written languages. This feature empowers you so you can use any Language in Nvim.
+
+Hex conversion 💻
+
+- A simple way to convert file to Hex form and from Hex form.
 
 ### Native Neovim Key Bindings 🎮
 
@@ -162,6 +166,7 @@ Take your editing experience to the next level with these added key bindings:
 - `<Space> + sw`: Surround word with a wanted character.
 - `<Space> + rw`: Replace all occurrences of a word.
 - `<Space + ht`: toggle `Hebrew` mode.
+- `<Space + hx`: Use `Hex` converter.
 - `<Ctrl> + n`: Toggle NERD Tree.
 - `<Space> + ff`: Finding a file in the working directly.
 - `<Space> + fh`: Finding a file in the working directly including a hidden one.
