@@ -218,6 +218,53 @@ if exists('g:GuiLoaded')
     autocmd VimEnter * Lex
 endif
 
+"------------------Hex_Toggle_Functions------------------
+
+function! DoHex()
+    " Get the current buffer name
+    let current_file = expand('%')
+
+    " New file name
+	let new_file = current_file . '.hex'
+
+    " Save the current buffer as a hex file
+    execute 'w !xxd > ' . new_file
+
+    echo "Hex file created and saved as " . new_file
+endfunction
+
+function! UndoHex()
+    " Get the current buffer name
+    let current_file = expand('%')
+
+	" Name stage 1: Remove the .hex extension if it exists
+    let new_file_stage1 = substitute(current_file, '\.hex$', '', '')
+
+    " Name stage 2: Add 'M' at the start of the file name ('M' = Modded)
+    let new_file = 'M' . new_file_stage1
+
+    " Save the current buffer as a reversed hex file
+    execute 'w !xxd -r > ' . new_file
+
+    echo "Reversed Hex file created and saved as " . new_file
+endfunction
+
+" Function to toggle between hex and original states
+function! HexState()
+    " Get user input to choose the operation (0 for DoHex, 1 for UndoHex)
+    let operation = input("Choose operation (0 for DoHex, 1 for UndoHex): ")
+
+    if operation == 0
+        " Execute the DoHex function
+        call DoHex()
+    elseif operation == 1
+        " Execute the UndoHex function
+        call UndoHex()
+    else
+        echo "Invalid choice. Aborting."
+    endif
+endfunction
+
 "------------------Hebrew_Toggle_Function------------------
 
 function! ToggleHebrew()
@@ -323,6 +370,10 @@ endfunction
 
 " Toggle Hebrew key maps and Right-to-Left setting
 	nnoremap <leader>ht <cmd>call ToggleHebrew()<CR>
+
+
+" Toggle between creating a Hex conversion file and reversing the conversion
+	nnoremap <leader>hx <cmd>call HexState()<CR>
 
 
 " Map V-Block to not confuse with Past
