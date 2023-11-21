@@ -250,7 +250,7 @@ EOF
 " Make Color of comments more visible (With treesitter)
 	hi @comment guifg=#777777
 
-"------------------GUI VERSION------------------
+"------------------GUI_VERSION------------------
 
 " If the user want more compatible editor
 if exists('g:GuiLoaded')
@@ -259,7 +259,7 @@ if exists('g:GuiLoaded')
 	let g:airline_powerline_fonts = 0
 	" Start Lex Tree and put the cursor back in the other window.
 	    " Start Lex Tree and put the cursor back in the other window.
-    autocmd VimEnter * Lex
+    autocmd VimEnter * Lex | wincmd p
 endif
 
 "------------------Hex_Toggle_Functions------------------
