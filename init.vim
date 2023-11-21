@@ -284,8 +284,14 @@ function! UndoHex()
 	" Name stage 1: Remove the .hex extension if it exists
     let new_file_stage1 = substitute(current_file, '\.hex$', '', '')
 
-    " Name stage 2: Add 'M' at the start of the file name ('M' = Modded)
-    let new_file = 'M' . new_file_stage1
+	" Get the file name without extension
+	let file_name = substitute(new_file_stage1, '\(.*\)\.\(\w\+\)$', '\1', '')
+
+	" Get the file extension
+	let file_extension = substitute(new_file_stage1, '\(.*\)\.\(\w\+\)$', '\2', '')
+
+	" Add 'M' before the extension(M = Modded)
+	let new_file = file_name . 'M.' . file_extension
 
     " Save the current buffer as a reversed hex file
     execute 'w !xxd -r > ' . new_file
