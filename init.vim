@@ -351,8 +351,6 @@ endfunction
 	autocmd FileType c nnoremap <leader>rr <cmd>!echo \n\n\n"Compiling:"\n && gcc % -o %:r && echo \n\n\n"Success"\n"The Output:"\n\n && %:p:r<CR>
 	" C++
 	autocmd FileType cpp nnoremap <leader>rr <cmd>!echo \n\n\n"Compiling:"\n && g++ % -o %:r -pthread -std=c++17 && echo \n\n\n"Success"\n"The Output:"\n\n && %:p:r<CR>
-	" Java
-	autocmd FileType java nnoremap <leader>rr <cmd>!echo \n\n\n"Compiling:"\n && javac % && echo \n\n\n"Success"\n"The Output:"\n\n && java %:p:r<CR>
 	" Rust
 	autocmd FileType rust nnoremap <leader>rr <cmd>!echo \n\n\n"Compiling:"\n && cargo run<CR>
 	" LaTeX
