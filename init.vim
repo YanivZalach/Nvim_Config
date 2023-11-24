@@ -365,6 +365,8 @@ endfunction
 " Type jj to exit insert mode quickly.
 	inoremap jj <Esc>
 
+" Source the vim config
+	nnoremap <leader>sc <cmd>source $MYVIMRC<CR>
 
 " Format a paragraph into lines
 	map Q gq<CR>
@@ -508,6 +510,10 @@ endfunction
 		nnoremap <leader>dx <cmd>call CocAction('jumpDefinition', 'vsplit')<CR>
 		nnoremap <leader>dy <cmd>call CocAction('jumpDefinition', 'split')<CR>
 		nnoremap <leader>dt <cmd>call CocAction('jumpDefinition', 'tabe')<CR>
+	" Organizing imports
+		nnoremap <leader>ci <cmd>call CocAction('organizeImport')<CR>
+	" Quick fix
+		nnoremap <leader>cf <cmd>call CocAction('doQuickfix')<CR>
 
 
 " For copy and past

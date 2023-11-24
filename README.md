@@ -147,6 +147,7 @@ Take your editing experience to the next level with these added key bindings:
 - `<Ctrl> + c`: Copy text to the main clipboard in normal mode.
 - `<Ctrl> + <Shift> + v`: Paste text from the main clipboard.
 - `jj`: Quickly exit insert mode.
+- `<Space> + sc`: Source the vim config.
 - `Q`: Format a paragraph into lines.
 - `J`: In visual mode, move line down.
 - `K`: In visual mode, move line up.
@@ -165,9 +166,9 @@ Take your editing experience to the next level with these added key bindings:
 - `<Ctrl> + q`: Save and quit.
 - `<Space> + sw`: Surround word with a wanted character.
 - `<Space> + rw`: Replace all occurrences of a word.
-- `<Space + ht`: toggle `Hebrew` mode.
-- `<Space + hx`: Use `Hex` converter.
-- `<Ctrl> + n`: Toggle NERD Tree.
+- `<Space> + ht`: toggle `Hebrew` mode.
+- `<Space> + hx`: Use `Hex` converter.
+- `<Space> + o`: Toggle Nvim Oil.
 - `<Space> + ff`: Finding a file in the working directly.
 - `<Space> + fh`: Finding a file in the working directly including a hidden one.
 - `<Space> + fb`: Finding an open file(buffer).
@@ -182,9 +183,12 @@ Take your editing experience to the next level with these added key bindings:
 - `<Space> + gp`: Git push.
 - `<Space> + gs`: Git file status.
 - `<Space> + gl`: Git log.
+- `<Space> + rr`: Code Runner.
 - `<Space> + dx`: Jump to definition, split horizontally.
 - `<Space> + dy`: Jump to definition, split vertically.
 - `<Space> + dt`: Jump to definition in a new tab.
+- `<Space> + ci`: Organizing the imports.
+- `<Space> + cf`: Doing quickfix.
 
 ## Troubleshooting 🔧
 
