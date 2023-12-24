@@ -365,12 +365,17 @@ endfunction
 " Type jj to exit insert mode quickly.
 	inoremap jj <Esc>
 
+
 " Source the vim config
 	nnoremap <leader>sc <cmd>source $MYVIMRC<CR>
+
 
 " Format a paragraph into lines
 	map Q gq<CR>
 
+
+" Select all the text
+	nnoremap <C-a> ggVG
 
 " Opening a file explore - stay as only window unlike NERD tree
 	map <leader>e <cmd>Lex<CR>

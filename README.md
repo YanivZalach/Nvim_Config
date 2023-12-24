@@ -148,6 +148,7 @@ Take your editing experience to the next level with these added key bindings:
 - `<Ctrl> + <Shift> + v`: Paste text from the main clipboard.
 - `jj`: Quickly exit insert mode.
 - `<Space> + sc`: Source the vim config.
+- `<Ctrl> + a`: Select all the text in the document.
 - `Q`: Format a paragraph into lines.
 - `J`: In visual mode, move line down.
 - `K`: In visual mode, move line up.
