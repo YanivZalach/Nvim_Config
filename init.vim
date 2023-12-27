@@ -375,7 +375,7 @@ endfunction
 
 
 " Select all the text
-	nnoremap <C-a> ggVG
+	nnoremap <leader>a ggVG
 
 " Opening a file explore - stay as only window unlike NERD tree
 	map <leader>e <cmd>Lex<CR>
