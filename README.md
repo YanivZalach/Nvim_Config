@@ -137,6 +137,8 @@ Utilize these native Vim key bindings to navigate and control the text editor ef
 - `/pattern`: Search for a specific pattern in the text.
 - `n`: Move to the next occurrence of the search pattern.
 - `N`: Move to the previous occurrence of the search pattern.
+- `<Ctrl> + a`: Increase a number.
+- `<Ctrl> + x`: Decrease a number.
 
 Remember, Vim's unique modal nature means that you often need to switch to Normal mode (by pressing `Esc`) before executing the above commands.
 
