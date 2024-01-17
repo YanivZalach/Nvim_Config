@@ -22,6 +22,7 @@
 		Plug 'tpope/vim-fugitive' " Git integration
 		Plug 'https://github.com/nvim-lua/plenary.nvim' " Dependency for telescope
 		Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' } " Telescope - fuzzy search throw files
+		Plug 'ThePrimeagen/harpoon' " Harpoon - better local marks
 		Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " Treesitter - better syntax highlighting
 		Plug 'neoclide/coc.nvim', {'branch': 'release'} " For auto complete 
 
@@ -498,6 +499,20 @@ endfunction
 	" All the keybinding
 	nnoremap <leader>fk <cmd>Telescope keymaps<CR>
 
+" Harpoon functionality
+	" Toggling harpoon (the j is for speed)
+	nnoremap <leader>hj <cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>
+	" Adding to harpoon
+	nnoremap <leader>ha <cmd>lua require("harpoon.mark").add_file()<CR>
+	" Next file in harpoon
+	nnoremap <leader>hn <cmd>lua require("harpoon.ui").nav_next()<CR>
+	" Previous file in harpoon (the y for speed)
+	nnoremap <leader>hy <cmd>lua require("harpoon.ui").nav_prev()<CR>
+	" The first 4 files
+	nnoremap <leader>h1 <cmd>lua require("harpoon.ui").nav_file(1)<CR>
+	nnoremap <leader>h2 <cmd>lua require("harpoon.ui").nav_file(2)<CR>
+	nnoremap <leader>h3 <cmd>lua require("harpoon.ui").nav_file(3)<CR>
+	nnoremap <leader>h4 <cmd>lua require("harpoon.ui").nav_file(4)<CR>
 
 " Coc functionality
 	"Tab and Enter completion

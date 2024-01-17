@@ -98,7 +98,7 @@ Oil nvim Integration 🌲
   
 Vim-airline ✈️
 
-- a sleek and customizable status bar for Nvim, located at the bottom of your editor.
+- A sleek and customizable status bar for Nvim, located at the bottom of your editor.
 
 Vim-web-devicons 🌈
 
@@ -115,6 +115,10 @@ Hebrew Mode 🚀
 Hex conversion 💻
 
 - A simple way to convert file to Hex form and from Hex form.
+
+Harpoon 🔌
+
+- A great file navigation plugin.
 
 ### Native Neovim Key Bindings 🎮
 
@@ -181,6 +185,11 @@ Take your editing experience to the next level with these added key bindings:
 - `<Space> + fk`: All the keybinding.
 - `<Space> + fm`: Select and go to mark.
 - `<Space> + fg`: Git status changes.
+- `<Space> + hj`: Toggle Harpoon.
+- `<Space> + ha`: Add file to Harpoon.
+- `<Space> + hn`: Next file in Harpoon.
+- `<Space> + hy`: Previous file in Harpoon.
+- `<Space> + h 1-4`: The first 4 files in Harpoon.
 - `<Space> + ga`: Add all changes.
 - `<Space> + gc`: Commit changes.
 - `<Space> + gp`: Git push.
