@@ -92,9 +92,9 @@ Git integration using vim fugitive 🎮
 
 - Git keybindings and commends easy and fast with vim fugitive.
 
-Oil nvim Integration 🌲
+File Explorer nvim Integration 🌲
 
-- Navigate through your project effortlessly with Oil nvim, your trusty sidekick for efficient file exploration.
+- Navigate through your project effortlessly with nvim, your trusty sidekick for efficient file exploration.
   
 Vim-airline ✈️
 

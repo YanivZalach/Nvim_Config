@@ -14,13 +14,12 @@
 
 	call plug#begin()
 
-		Plug 'stevearc/oil.nvim' " Nvim oil - file explore
-		Plug 'nvim-tree/nvim-web-devicons' " Devicons for Nvim oil
 		Plug 'https://github.com/vim-airline/vim-airline' " Status bar
 		Plug 'vim-airline/vim-airline-themes' " Color scheme for Status bar
 		Plug 'navarasu/onedark.nvim' " Color scheme - onedark
 		Plug 'tpope/vim-fugitive' " Git integration
 		Plug 'https://github.com/nvim-lua/plenary.nvim' " Dependency for telescope
+		Plug 'nvim-tree/nvim-web-devicons' " Devicons for telescope
 		Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' } " Telescope - fuzzy search throw files
 		Plug 'ThePrimeagen/harpoon' " Harpoon - better local marks
 		Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " Treesitter - better syntax highlighting
@@ -170,59 +169,6 @@
 	let g:netrw_showhide=1
 	let g:netrw_winsize=20
 
-" Oil Nvim settings
-lua << EOF
-	require("oil").setup({
-	-- Set to false if you still want to use netrw.
-	default_file_explorer = false,
-	columns = {
-		"icon",
-		-- "permissions",
-		"size",
-		-- "mtime",
-		},
-	-- Send deleted files to the trash instead of permanently deleting them (:help oil-trash)
-	delete_to_trash = false,
-	keymaps = {
-		["g?"] = "actions.show_help",
-		["<CR>"] = "actions.select",
-		["<C-s>"] = "actions.select_vsplit",
-		["<C-i>"] = "actions.select_split",
-		["<C-t>"] = "actions.select_tab",
-		["<C-p>"] = "actions.preview",
-		["<C-c>"] = "actions.close",
-		["<C-r>"] = "actions.refresh",
-		["-"] = "actions.parent",
-		["_"] = "actions.open_cwd",
-		["`"] = "actions.cd",
-		["~"] = "actions.tcd",
-		["gs"] = "actions.change_sort",
-		["gx"] = "actions.open_external",
-		["g."] = "actions.toggle_hidden",
-		["g\\"] = "actions.toggle_trash",
-		},
-	-- Set to false to disable all of the above keymaps
-	use_default_keymaps = false,
-	view_options = {
-		-- Show hidden files
-		show_hidden = true,
-		-- Defines what is considered a "hidden" file
-		is_hidden_file = function(name, bufnr)
-		  return vim.startswith(name, ".")
-		end,
-		-- Defines what will never be shown, even when `show_hidden` is set
-		is_always_hidden = function(name, bufnr)
-		  return false
-		end,
-		sort = {
-		  -- sort order can be "asc" or "desc"
-		  -- see :help oil-columns to see which columns are sortable
-		  { "type", "asc" },
-		  { "name", "asc" },
-		},
-	  },
-	})
-EOF
 
 " Treesitter settings
 lua << EOF
@@ -457,8 +403,9 @@ endfunction
 	noremap <leader>v <C-v>
 
 
-" Opening/closing Nvim oil
-	map <leader>o <cmd>Oil<CR>
+" Opening a file from file explore
+	map <leader>o :Explore<CR>
+
 
 " Git integration
 	" Git stage all changes
