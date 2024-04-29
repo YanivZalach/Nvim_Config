@@ -317,6 +317,10 @@ endfunction
 	nnoremap <leader>sc <cmd>source $MYVIMRC<CR>
 
 
+" Format hole document
+	map <A-C-l> ggVG=
+	
+
 " Format a paragraph into lines
 	map Q gq<CR>
 
