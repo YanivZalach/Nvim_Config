@@ -1,3 +1,16 @@
+---------------------------------------------------------------------------               
+--
+--			███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
+--			████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
+--			██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
+--			██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
+--			██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
+--			╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
+--
+---------------------------------------------------------------------------   
+
+
+-- Installing the plugin manager automatically --
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -13,9 +26,9 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   end
 end
 vim.opt.rtp:prepend(lazypath)
--- Initialize LazyVim
+
+-- Installing the plugins --
 require('lazy').setup({
-    'wbthomason/packer.nvim', -- Packer can manage itself
     'vim-airline/vim-airline', -- Status bar
     'vim-airline/vim-airline-themes', -- Color scheme for Status bar
     'navarasu/onedark.nvim', -- Color scheme - onedark
@@ -25,15 +38,21 @@ require('lazy').setup({
     {'nvim-telescope/telescope.nvim', tag = '0.1.2'}, -- Telescope - fuzzy search
     'ThePrimeagen/harpoon', -- Harpoon - better local marks
     {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}, -- Treesitter - better syntax highlighting
-    {'neoclide/coc.nvim', branch = 'release'}, -- Auto complete
+  'neovim/nvim-lspconfig', -- for built-in LSP support
+  'williamboman/nvim-lsp-installer', -- for easy LSP server installation
+  'j-hui/fidget.nvim', -- optional, for LSP progress display
 })
 
--- Basic Settings
+-- Settings --
 vim.opt.compatible = false
 vim.opt.visualbell = true
 vim.opt.encoding = 'utf-8'
 vim.opt.spell = true
 vim.opt.smarttab = true
+vim.opt.path:append('**')
+vim.cmd('syntax on')
+vim.cmd('filetype plugin on')
+vim.cmd('filetype indent on')
 vim.opt.mouse = 'a'
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -52,23 +71,29 @@ vim.opt.history = 1000
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.wildmenu = true
-vim.opt.nobackup = true
-vim.opt.path:append('**')
+
+-- Wild menu will ignore files with these extensions
 vim.opt.wildignore:append('*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx')
-vim.cmd('syntax on')
-
--- Color scheme
-vim.g.onedark_config = { style = 'darker' }
-vim.cmd('colorscheme onedark')
-
--- Filetype detection
-vim.cmd('filetype plugin on')
-vim.cmd('filetype indent on')
 
 -- Auto command for HTML filetype
 vim.cmd [[
     autocmd FileType html setlocal tabstop=2 shiftwidth=2 expandtab
 ]]
+
+-- Disable auto commenting in a new line
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function()
+    vim.opt_local.formatoptions:remove({ 'c', 'r', 'o' })
+  end,
+})
+
+-- Color scheme
+vim.g.onedark_config = { style = 'darker' }
+vim.cmd('colorscheme onedark')
+vim.cmd('highlight Comment guifg=#777777')
+vim.cmd('hi @comment guifg=#777777')
+
 
 -- Treesitter Configuration
 require'nvim-treesitter.configs'.setup {
