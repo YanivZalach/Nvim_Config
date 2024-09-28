@@ -9,6 +9,18 @@
 --
 ---------------------------------------------------------------------------   
 
+------------------ LSP servers ------------------
+local lsp_servers = {
+	"lua_ls",  -- Lua Language Server
+	"pyright",  -- Python Language Server
+	"rust_analyzer",  -- Rust Language Server
+	"gopls",    -- Go Language Server
+	"jdtls",    -- Java Development Tools Language Server
+	"clangd",   -- C/C++ Language Server
+	"ts_ls",    -- TypeScript/JavaScript Language Server
+	"html",     -- HTML Language Server
+	"cssls",    -- CSS Language Server
+}
 
 ------------------ Installing the plugin manager automatically ------------------
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -326,19 +338,6 @@ map('n', leader .. 'ps', ':Lazy<CR>' ,opts)
 map('n', leader .. 'pi', ':Mason<CR>' ,opts)
 
 ------------------ LSP ------------------
-local lsp_servers = {
-	"lua_ls",  -- Lua Language Server
-	"pyright",  -- Python Language Server
-	"rust_analyzer",  -- Rust Language Server
-	"gopls",    -- Go Language Server
-	"jdtls",    -- Java Development Tools Language Server
-	"clangd",   -- C/C++ Language Server
-	"ts_ls",    -- TypeScript/JavaScript Language Server
-	"html",     -- HTML Language Server
-	"cssls",    -- CSS Language Server
-}
-
-
 require("mason").setup()
 require("mason-lspconfig").setup({
 	ensure_installed = lsp_servers
