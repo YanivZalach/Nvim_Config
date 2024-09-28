@@ -29,18 +29,30 @@ vim.opt.rtp:prepend(lazypath)
 
 ------------------ Installing the plugins ------------------
 require('lazy').setup({
-	'vim-airline/vim-airline', -- Status bar
-	'vim-airline/vim-airline-themes', -- Color scheme for Status bar
 	'navarasu/onedark.nvim', -- Color scheme - onedark
 	'tpope/vim-fugitive', -- Git integration
-	'nvim-lua/plenary.nvim', -- Dependency for telescope
-	'nvim-tree/nvim-web-devicons', -- Devicons for telescope
-	{'nvim-telescope/telescope.nvim', tag = '0.1.2'}, -- Telescope - fuzzy search
 	'ThePrimeagen/harpoon', -- Harpoon - better local marks
 	{'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}, -- Treesitter - better syntax highlighting
-	'neovim/nvim-lspconfig', -- for built-in LSP support
-	'williamboman/nvim-lsp-installer', -- for easy LSP server installation
-	'j-hui/fidget.nvim', -- optional, for LSP progress display
+	{
+		'vim-airline/vim-airline', -- Status bar
+		'vim-airline/vim-airline-themes' -- Color scheme for Status bar
+	},
+	{
+		{'nvim-telescope/telescope.nvim', tag = '0.1.2'}, -- Telescope - fuzzy search
+		'nvim-lua/plenary.nvim', -- Dependency for telescope
+		'nvim-tree/nvim-web-devicons' -- Devicons for telescope
+	},
+	{
+		'neovim/nvim-lspconfig', -- LSP
+		'williamboman/mason.nvim', -- Plugin manager
+		'williamboman/mason-lspconfig.nvim', -- Bridge from LSP to Mason
+		'hrsh7th/nvim-cmp' , -- Auto completion
+		'hrsh7th/cmp-nvim-lsp' ,
+		'hrsh7th/cmp-buffer' ,
+		'hrsh7th/cmp-path' ,
+		'hrsh7th/cmp-cmdline' ,
+		'hrsh7th/cmp-nvim-lua'
+	}
 })
 
 ------------------ Settings ------------------
@@ -130,6 +142,13 @@ map('n', '<C-S-V>', '"+P', opts)
 map('v', '<C-C>', '"*y :let @+=@*<CR>', opts)
 map('n', leader .. 'v', '<C-v>', opts)
 
+-- Close bracts
+map('i', '(','()',opts)
+map('i', '"','""',opts)
+map('i', '{', '{}',opts)
+map('i', '[', '[]',opts)
+map('i', '/*','/**/',opts)
+
 -- File explorer and terminal
 map('n', leader .. 'e', ':Lex<CR>', opts)
 map('n', leader .. 'o', ':Explore<CR>', opts)
@@ -144,7 +163,7 @@ map('n', '<C-z>', ':setlocal spell! spelllang=en_us<CR>', opts)
 map('i', 'jj', '<Esc>', opts)
 
 -- Format whole document
-map('n', '<A-C-l>', 'ggVG=', opts)
+map('n', '<A-C-l>', 'mzggVG=`zzz', opts)
 
 -- Format a paragraph into lines
 map('n', 'Q', 'gq<CR>', opts)
@@ -285,7 +304,6 @@ map('n', '<C-q>', ':wqa<CR>', opts)
 map('n', leader .. 'sw', ':echo "Press a character: " | let c = nr2char(getchar()) | exec "normal viwo\\ei" . c . "\\eea" . c . "\\e" | redraw<CR>', opts)
 
 -- Replace all occurrences of a word
--- Function to replace the word under the cursor with a user-defined word
 function ReplaceWord()
 	local word = vim.fn.expand("<cword>")  
 	if word ~= "" then
@@ -301,7 +319,72 @@ function ReplaceWord()
 	end
 end
 
--- Map <leader>rw to the new command
 map('n', leader .. 'rw', ':lua ReplaceWord()<CR>', opts)
 
+-- Plugin manager status
+map('n', leader .. 'ps', ':Lazy<CR>' ,opts)
+map('n', leader .. 'pi', ':Mason<CR>' ,opts)
 
+------------------ LSP ------------------
+local lsp_servers = {
+	"lua_ls",  -- Lua Language Server
+	"pyright",  -- Python Language Server
+	"rust_analyzer",  -- Rust Language Server
+	"gopls",    -- Go Language Server
+	"jdtls",    -- Java Development Tools Language Server
+	"clangd",   -- C/C++ Language Server
+	"ts_ls",    -- TypeScript/JavaScript Language Server
+	"html",     -- HTML Language Server
+	"cssls",    -- CSS Language Server
+}
+
+
+require("mason").setup()
+require("mason-lspconfig").setup({
+	ensure_installed = lsp_servers
+})
+
+local cmp = require('cmp')
+local cmp_select = {behavior = cmp.SelectBehavior.Select}
+
+cmp.setup({
+	mapping = {
+		['<C-Space>'] = cmp.mapping.complete(),
+		['<CR>'] = cmp.mapping.confirm({ select = true }),
+		['<Tab>'] = cmp.mapping.confirm({ select = true }),
+		['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+		['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+	},
+	sources = {
+		{ name = 'nvim_lsp' },
+		{ name = 'buffer' },
+		{ name = 'path' },
+		{ name = 'cmdline' },
+		{ name = 'nvim_lua' },
+	},
+})
+
+-- LSP on_attach function
+local on_attach = function(_, bufnr)
+	local attach_opts = { buffer = bufnr }
+
+	vim.keymap.set('n', '<C-b>', vim.lsp.buf.definition, attach_opts)
+	vim.keymap.set('n', '<S-F6>', vim.lsp.buf.rename, attach_opts)
+	vim.keymap.set('n', '<leader>gr', vim.lsp.buf.references, attach_opts)
+	vim.keymap.set('n', '<leader>gd', vim.lsp.buf.declaration, attach_opts)
+	vim.keymap.set('n', '<leader>gi', vim.lsp.buf.implementation, attach_opts)
+	vim.keymap.set('n', '<leader>go', vim.lsp.buf.type_definition, attach_opts)
+	vim.keymap.set('n', '<leader>gs', vim.lsp.buf.signature_help, attach_opts)
+	vim.keymap.set('n', '<leader>ga', vim.lsp.buf.code_action, attach_opts)
+end
+
+local function setup_lsp(server)
+	require("lspconfig")[server].setup {
+		on_attach = on_attach,
+		capabilities = require('cmp_nvim_lsp').default_capabilities(),
+	}
+end
+
+for _, server in ipairs(lsp_servers) do
+	setup_lsp(server)
+end
