@@ -370,3 +370,10 @@ end
 for _, server in ipairs(lsp_servers) do
 	setup_lsp(server)
 end
+
+vim.opt.updatetime = 300
+vim.api.nvim_create_autocmd("CursorHold", {
+    callback = function()
+        vim.diagnostic.open_float(nil, { focusable = false })
+    end,
+})
