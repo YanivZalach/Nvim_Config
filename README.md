@@ -80,10 +80,6 @@ Telescope Fuzzy Finder 🔍
 
 - Move fast using the Telescope Fuzzy Finder to switch seamlessly between files.
   
-Treesitter Syntax Highlighting 🌲
-
-- Better syntax highlighting with treesitter.
-
 Auto-Completion using coc.nvim 🔌
   
 - Auto-completion courtesy of coc.nvim, which can be extended in the future, with enhancements and specific languages.

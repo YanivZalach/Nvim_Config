@@ -14,7 +14,6 @@ local lsp_servers = {
 	"lua_ls",  -- Lua Language Server
 	"pyright",  -- Python Language Server
 	"rust_analyzer",  -- Rust Language Server
-	"gopls",    -- Go Language Server
 	"jdtls",    -- Java Development Tools Language Server
 	"clangd",   -- C/C++ Language Server
 	"ts_ls",    -- TypeScript/JavaScript Language Server
@@ -44,7 +43,6 @@ require('lazy').setup({
 	'navarasu/onedark.nvim', -- Color scheme - onedark
 	'tpope/vim-fugitive', -- Git integration
 	'ThePrimeagen/harpoon', -- Harpoon - better local marks
-	{'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}, -- Treesitter - better syntax highlighting
 	{
 		'vim-airline/vim-airline', -- Status bar
 		'vim-airline/vim-airline-themes' -- Color scheme for Status bar
@@ -123,22 +121,6 @@ vim.cmd('colorscheme onedark')
 vim.cmd('highlight Comment guifg=#777777')
 vim.cmd('hi @comment guifg=#777777')
 
-
--- Treesitter Configuration
-require'nvim-treesitter.configs'.setup {
-	ensure_installed = { "c", "lua", "vim", "vimdoc", "query" },
-	sync_install = false,
-	auto_install = true,
-	highlight = {
-		enable = true,
-		additional_vim_regex_highlighting = false,
-		disable = function(lang, buf)
-			local max_filesize = 100 * 1024 -- 100 KB
-			local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-			return ok and stats and stats.size > max_filesize
-		end,
-	},
-}
 
 ------------------ Keybindings ------------------
 local map = vim.api.nvim_set_keymap
@@ -378,10 +360,11 @@ local on_attach = function(_, bufnr)
 end
 
 local function setup_lsp(server)
-	require("lspconfig")[server].setup {
-		on_attach = on_attach,
-		capabilities = require('cmp_nvim_lsp').default_capabilities(),
-	}
+    vim.lsp.config(server, {
+        on_attach = on_attach,
+        capabilities = require('cmp_nvim_lsp').default_capabilities(),
+    })
+    vim.lsp.enable(server)
 end
 
 for _, server in ipairs(lsp_servers) do
