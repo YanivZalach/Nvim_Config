@@ -23,8 +23,8 @@ Before using this Nvim configuration, make sure you have the following installed
 
 **And:**
 
-- [Node.js](https://github.com/nodejs/node) 🟢 (Auto-Completion using nvim.coc)
-- [Vim-Plug](https://github.com/junegunn/vim-plug) ⚡️ (plugin manager)
+- [Node.js](https://github.com/nodejs/node) 🟢 (Required by some LSP language servers)
+- [ripgrep](https://github.com/BurntSushi/ripgrep) 🔍 (Required for project-wide text search with Telescope)
 
 *What if i want a fast, plug and play setup? visit: <https://github.com/YanivZalach/Vim_Config_NO_PLUGINS>*
 
@@ -42,31 +42,15 @@ Before using this Nvim configuration, make sure you have the following installed
 
 3. Install the Plugins:
 
-   To install the plugins, follow these steps:
+   Plugins are managed by [lazy.nvim](https://github.com/folke/lazy.nvim), which **auto-installs on first launch**.
 
-   Launch NeoVim by typing the following in the terminal, all in lowercase:
+   Simply open NeoVim:
 
    ```
    nvim
    ```
 
-   Once inside NeoVim, press **:** to enter command mode.
-
-   Write the following command to trigger plugin installation:
-
-   ```
-   PlugInstall
-   ```
-
-   After running this command, a window will pop up showing the progress of plugin downloads. Wait for the downloads to complete.
-
-   Once the download is finished, you can exit the window by typing:
-
-   ```
-   :q
-   ```
-
-   With these steps, you'll have successfully installed the plugins for your NeoVim configuration.
+   Lazy will automatically bootstrap itself and install all plugins. Wait for the installation to complete, then restart NeoVim.
 
 ## Usage, Features, and Special Key Bindings 🚀
 
@@ -84,9 +68,9 @@ Auto-Completion using coc.nvim 🔌
   
 - Auto-completion courtesy of coc.nvim, which can be extended in the future, with enhancements and specific languages.
 
-Git integration using vim fugitive 🎮
+LSP (Language Server Protocol) 🧠
 
-- Git keybindings and commends easy and fast with vim fugitive.
+- Full IDE-like language features: go to definition, find references, rename, code actions, diagnostics, and more — with PyCharm-style keybindings.
 
 File Explorer nvim Integration 🌲
 
@@ -144,60 +128,79 @@ Remember, Vim's unique modal nature means that you often need to switch to Norma
 
 ### Enhanced Key Bindings for Speed and Fun! ⚡️
 
-Take your editing experience to the next level with these added key bindings:
-
-- `<Ctrl> + c`: Copy text to the main clipboard in normal mode.
-- `<Ctrl> + <Shift> + v`: Paste text from the main clipboard.
+**Editing:**
+- `<Ctrl> + <Shift> + V`: Paste text from the main clipboard.
+- `<Ctrl> + C` (visual): Copy selection to the main clipboard.
 - `jj`: Quickly exit insert mode.
-- `<Space> + sc`: Source the vim config.
 - `<Space> + a`: Select all the text in the document.
 - `Q`: Format a paragraph into lines.
-- `<Ctrl> + <Alt> + l`: Format hole document.
-- `J`: In visual mode, move line down.
-- `K`: In visual mode, move line up.
-- `<Ctrl> + z`: Toggle spell check.
-- `<Space> + e`: Open a file explorer.
-- `<Space> + v`: Enter V-Block Mode
-- `<Ctrl> + t`: Toggle a terminal window.
-- `<Ctrl> + i`: Make the terminal scrollable or switch to input mode.
+- `<Ctrl> + <Alt> + L`: Format whole document.
+- `<Ctrl> + Z`: Toggle spell check.
+- `<Space> + sw`: Surround word with a chosen character.
+- `<Space> + rw`: Replace all occurrences of word under cursor.
+
+**File Explorer & Terminal:**
+- `<Space> + e`: Open side file explorer.
+- `<Space> + o`: Open file explorer (full).
+- `<Space> + tt`: Open a terminal.
+- `jj` / `<Esc>` (in terminal): Exit terminal mode.
+
+**Windows & Tabs:**
 - `<Space> + y`: Split window vertically.
 - `<Space> + x`: Split window horizontally.
-- `<Ctrl> + j`, `<Ctrl> + k`, `<Ctrl> + h`, `<Ctrl> + l`: Navigate between splits.
-- `<Alt> + Left Arrow`, `<Alt> + Right Arrow`, `<Alt> + Up Arrow`, `<Alt> + Down Arrow`: Resize splits.
-- `<Space> + t`: Switch between tabs.
-- `<Space> + c`: Create a new tab.
-- `<Ctrl> + s`: Save the current file.
-- `<Ctrl> + q`: Save and quit.
-- `<Space> + sw`: Surround word with a wanted character.
-- `<Space> + rw`: Replace all occurrences of a word.
-- `<Space> + ht`: toggle `Hebrew` mode.
-- `<Space> + hx`: Use `Hex` converter.
-- `<Space> + o`: Toggle Nvim Oil.
-- `<Space> + ff`: Finding a file in the working directly.
-- `<Space> + fh`: Finding a file in the working directly including a hidden one.
-- `<Space> + fb`: Finding an open file(buffer).
-- `<Space> + fo`: Opening an old file.
-- `<Space> + fw`: Fuzzy word finding.
+- `<Ctrl> + H/J/K/L`: Navigate between splits.
+- `<Alt> + ↑/↓/←/→`: Resize splits.
+- `<Space> + c`: Open/create file in new tab.
+- `<S-Tab>`: Switch to next tab.
+- `<Ctrl> + S`: Save all files.
+- `<Ctrl> + Q`: Save and quit all.
+
+**Search & Navigation (Telescope):**
+- `<Ctrl> + <Shift> + F`: Search string in whole project (Find in Path).
+- `<Ctrl> + F`: Fuzzy search in current buffer.
+- `<S> + S`: Search symbols/signatures in project (Search Everywhere).
+- `<Space> + ff`: Find a file by name.
+- `<Space> + fh`: Find hidden files.
+- `<Space> + fb`: Find open buffer.
+- `<Space> + fo`: Open recent file.
 - `<Space> + fr`: Pick from registers.
-- `<Space> + fk`: All the keybinding.
-- `<Space> + fm`: Select and go to mark.
-- `<Space> + fg`: Git status changes.
-- `<Space> + hj`: Toggle Harpoon.
+- `<Space> + fm`: Go to mark.
+- `<Space> + fk`: View all keybindings.
+
+**Harpoon (Quick File Navigation):**
+- `<Space> + hj`: Toggle Harpoon menu.
 - `<Space> + ha`: Add file to Harpoon.
-- `<Space> + hn`: Next file in Harpoon.
-- `<Space> + hy`: Previous file in Harpoon.
-- `<Space> + h 1-4`: The first 4 files in Harpoon.
-- `<Space> + ga`: Add all changes.
-- `<Space> + gc`: Commit changes.
-- `<Space> + gp`: Git push.
-- `<Space> + gs`: Git file status.
-- `<Space> + gl`: Git log.
-- `<Space> + rr`: Code Runner.
-- `<Space> + dx`: Jump to definition, split horizontally.
-- `<Space> + dy`: Jump to definition, split vertically.
-- `<Space> + dt`: Jump to definition in a new tab.
-- `<Space> + ci`: Organizing the imports.
-- `<Space> + cf`: Doing quickfix.
+- `<Space> + hn`: Next Harpoon file.
+- `<Space> + hy`: Previous Harpoon file.
+- `<Space> + h1`–`h4`: Jump to Harpoon files 1–4.
+
+**Other:**
+- `<Space> + v`: Enter V-Block mode.
+- `<Space> + ht`: Toggle Hebrew mode.
+- `<Space> + hx`: Hex file converter.
+- `<Space> + ps`: Open plugin manager (Lazy).
+- `<Space> + pi`: Open LSP installer (Mason).
+- `<leader> + rr` (Markdown only): Compile to PDF with Pandoc.
+
+### LSP Key Bindings (PyCharm-style) 🧠
+
+Active when an LSP server is attached to the buffer:
+
+| Keybinding | Action |
+|---|---|
+| `<Ctrl> + B` | Go to Definition |
+| `<Ctrl> + <Shift> + B` | Go to Type Definition |
+| `<Shift> + F6` | Rename Symbol |
+| `<Alt> + F7` | Find Usages / References |
+| `<Ctrl> + <Alt> + B` | Go to Implementation |
+| `<Alt> + Enter` | Show Code Actions |
+| `<Ctrl> + P` | Parameter Info / Signature Help |
+| `K` | Quick Documentation (Hover) |
+| `F2` | Jump to Next Diagnostic |
+| `<Shift> + F2` | Jump to Previous Diagnostic |
+| `<Ctrl> + F12` | File Structure (symbols in current file) |
+| `<Ctrl> + <Alt> + O` | Organize / Sort Imports |
+| `<Space> + gd` | Go to Declaration |
 
 ## Troubleshooting 🔧
 

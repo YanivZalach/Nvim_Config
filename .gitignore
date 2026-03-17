@@ -1,4 +1,5 @@
 # Local backup
 init.vim.*
 lazy-lock.json
+spell
 

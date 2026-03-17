@@ -41,7 +41,6 @@ vim.opt.rtp:prepend(lazypath)
 ------------------ Installing the plugins ------------------
 require('lazy').setup({
 	'navarasu/onedark.nvim', -- Color scheme - onedark
-	'tpope/vim-fugitive', -- Git integration
 	'ThePrimeagen/harpoon', -- Harpoon - better local marks
 	{
 		'vim-airline/vim-airline', -- Status bar
@@ -177,15 +176,13 @@ vim.api.nvim_create_autocmd("FileType", {
 	end
 })
 
--- Telescope functionality
-map('n', leader .. 'ff', ':Telescope find_files<CR>', opts)
+map('n', '<C-S-F>', ':Telescope live_grep<CR>', opts)
+map('n', '<C-f>', ':Telescope current_buffer_fuzzy_find<CR>', opts)
 map('n', leader .. 'fh', ':Telescope find_files hidden=true<CR>', opts)
 map('n', leader .. 'fb', ':Telescope buffers<CR>', opts)
 map('n', leader .. 'fo', ':Telescope oldfiles<CR>', opts)
-map('n', leader .. 'fw', ':Telescope current_buffer_fuzzy_find<CR>', opts)
 map('n', leader .. 'fr', ':Telescope registers<CR>', opts)
 map('n', leader .. 'fm', ':Telescope marks<CR>', opts)
-map('n', leader .. 'fg', ':Telescope git_status<CR>', opts)
 map('n', leader .. 'fk', ':Telescope keymaps<CR>', opts)
 
 -- Harpoon functionality
@@ -197,13 +194,6 @@ map('n', leader .. 'h1', ':lua require("harpoon.ui").nav_file(1)<CR>', opts)
 map('n', leader .. 'h2', ':lua require("harpoon.ui").nav_file(2)<CR>', opts)
 map('n', leader .. 'h3', ':lua require("harpoon.ui").nav_file(3)<CR>', opts)
 map('n', leader .. 'h4', ':lua require("harpoon.ui").nav_file(4)<CR>', opts)
-
--- Git integration
-map('n', leader .. 'ga', ':w<CR>:G add .<CR>', opts)
-map('n', leader .. 'gc', ':G commit<CR>', opts)
-map('n', leader .. 'gp', ':G push<CR>', opts)
-map('n', leader .. 'gs', ':G<CR>', opts)
-map('n', leader .. 'gl', ':G log<CR>', opts)
 
 -- Function to toggle Hebrew
 function ToggleHebrew()
@@ -345,18 +335,23 @@ cmp.setup({
 	},
 })
 
--- LSP on_attach function
 local on_attach = function(_, bufnr)
 	local attach_opts = { buffer = bufnr }
-
-	vim.keymap.set('n', '<C-b>', vim.lsp.buf.definition, attach_opts)
-	vim.keymap.set('n', '<S-F6>', vim.lsp.buf.rename, attach_opts)
+	vim.keymap.set('n', '<C-S-B>', vim.lsp.buf.definition, attach_opts)
+	vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, attach_opts)
 	vim.keymap.set('n', '<leader>gr', vim.lsp.buf.references, attach_opts)
+	vim.keymap.set('n', '<C-p>',      vim.lsp.buf.signature_help, attach_opts)
+	vim.keymap.set('n', 'K',          vim.lsp.buf.hover, attach_opts)
+	vim.keymap.set('n', ']d',         vim.diagnostic.goto_next, attach_opts)
+	vim.keymap.set('n', '[d',         vim.diagnostic.goto_prev, attach_opts)
+	vim.keymap.set('n', '<leader>ds', ':Telescope lsp_document_symbols<CR>', attach_opts)
 	vim.keymap.set('n', '<leader>gd', vim.lsp.buf.declaration, attach_opts)
-	vim.keymap.set('n', '<leader>gi', vim.lsp.buf.implementation, attach_opts)
-	vim.keymap.set('n', '<leader>go', vim.lsp.buf.type_definition, attach_opts)
-	vim.keymap.set('n', '<leader>gs', vim.lsp.buf.signature_help, attach_opts)
-	vim.keymap.set('n', '<leader>ga', vim.lsp.buf.code_action, attach_opts)
+	vim.keymap.set('n', '<C-A-O>', function()
+    vim.lsp.buf.execute_command({
+			command = 'pyright.organizeimports',
+			arguments = { vim.uri_from_bufnr(0) },
+		})
+	end, attach_opts)
 end
 
 local function setup_lsp(server)
