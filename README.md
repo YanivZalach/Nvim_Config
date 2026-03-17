@@ -158,8 +158,6 @@ Remember, Vim's unique modal nature means that you often need to switch to Norma
 **Search & Navigation (Telescope):**
 - `<Ctrl> + <Shift> + F`: Search string in whole project (Find in Path).
 - `<Ctrl> + F`: Fuzzy search in current buffer.
-- `<S> + S`: Search symbols/signatures in project (Search Everywhere).
-- `<Space> + ff`: Find a file by name.
 - `<Space> + fh`: Find hidden files.
 - `<Space> + fb`: Find open buffer.
 - `<Space> + fo`: Open recent file.
@@ -182,23 +180,20 @@ Remember, Vim's unique modal nature means that you often need to switch to Norma
 - `<Space> + pi`: Open LSP installer (Mason).
 - `<leader> + rr` (Markdown only): Compile to PDF with Pandoc.
 
-### LSP Key Bindings (PyCharm-style) 🧠
+### LSP Key Bindings 🧠
 
 Active when an LSP server is attached to the buffer:
 
 | Keybinding | Action |
 |---|---|
-| `<Ctrl> + B` | Go to Definition |
-| `<Ctrl> + <Shift> + B` | Go to Type Definition |
-| `<Shift> + F6` | Rename Symbol |
-| `<Alt> + F7` | Find Usages / References |
-| `<Ctrl> + <Alt> + B` | Go to Implementation |
-| `<Alt> + Enter` | Show Code Actions |
+| `<Ctrl> + <Shift> + B` | Go to Definition |
+| `<Space> + rn` | Rename Symbol |
+| `<Space> + gr` | Find Usages / References |
 | `<Ctrl> + P` | Parameter Info / Signature Help |
 | `K` | Quick Documentation (Hover) |
-| `F2` | Jump to Next Diagnostic |
-| `<Shift> + F2` | Jump to Previous Diagnostic |
-| `<Ctrl> + F12` | File Structure (symbols in current file) |
+| `]d` | Jump to Next Diagnostic |
+| `[d` | Jump to Previous Diagnostic |
+| `<Space> + ds` | File Structure (symbols in current file) |
 | `<Ctrl> + <Alt> + O` | Organize / Sort Imports |
 | `<Space> + gd` | Go to Declaration |
 
