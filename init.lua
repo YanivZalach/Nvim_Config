@@ -136,11 +136,11 @@ map('v', '<C-C>', '"*y :let @+=@*<CR>', opts)
 map('n', leader .. 'v', '<C-v>', opts)
 
 -- Close bracts
-map('i', '(','()',opts)
-map('i', '"','""',opts)
-map('i', '{', '{}',opts)
-map('i', '[', '[]',opts)
-map('i', '/*','/**/',opts)
+map('i', '(', '()<Left>', opts)
+map('i', '"', '""<Left>', opts)
+map('i', '{', '{}<Left>', opts)
+map('i', '[', '[]<Left>', opts)
+map('i', '/*', '/**/<Left><Left>', opts)
 
 -- File explorer and terminal
 map('n', leader .. 'e', ':Lex<CR>', opts)
