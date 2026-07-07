@@ -131,6 +131,7 @@ Remember, Vim's unique modal nature means that you often need to switch to Norma
 **Editing:**
 - `<Ctrl> + <Shift> + V`: Paste text from the main clipboard.
 - `<Ctrl> + C` (visual): Copy selection to the main clipboard.
+- `<Space> + C` (visual): Copy selection to the main clipboard.
 - `jj`: Quickly exit insert mode.
 - `<Space> + a`: Select all the text in the document.
 - `Q`: Format a paragraph into lines.

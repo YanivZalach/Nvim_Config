@@ -133,6 +133,7 @@ vim.g.mapleader = leader
 -- Fix copy/paste and visual-block
 map('n', '<C-S-V>', '"+P', opts)
 map('v', '<C-C>', '"*y :let @+=@*<CR>', opts)
+map('v', leader .. 'c', '"*y :let @+=@*<CR>', opts)
 map('n', leader .. 'v', '<C-v>', opts)
 
 -- Close bracts
